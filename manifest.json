@@ -1,0 +1,10 @@
+{
+  "name": "Smart Find & Replace",
+  "id": "smart-find-replace",
+  "api": "1.0.0",
+  "main": "code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "ui.html"
+}
