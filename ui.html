@@ -352,19 +352,31 @@
     }
 
     function updatePreview(matches) {
+      previewList.replaceChildren();
+
       if (!matches || matches.length === 0) {
         previewSection.classList.remove('show');
-        previewList.innerHTML = '';
         return;
       }
 
       previewSection.classList.add('show');
-      previewList.innerHTML = matches.map(match => `
-        <div class="preview-item">
-          <div class="layer-name">${match.layerName}</div>
-          <div class="text-preview">"${match.preview}"</div>
-        </div>
-      `).join('');
+
+      for (const match of matches) {
+        const item = document.createElement('div');
+        item.className = 'preview-item';
+
+        const layer = document.createElement('div');
+        layer.className = 'layer-name';
+        layer.textContent = match.layerName;
+
+        const preview = document.createElement('div');
+        preview.className = 'text-preview';
+        preview.textContent = `"${match.preview}"`;
+
+        item.appendChild(layer);
+        item.appendChild(preview);
+        previewList.appendChild(item);
+      }
     }
 
     findBtn.onclick = () => {
